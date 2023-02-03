@@ -170,6 +170,20 @@ confirmDel.onclick = function () {
   });
 };
 
+let updateBtn = document.querySelector('.updateBtn')
+let editBtn = document.querySelector('.editBtn');
+editBtn.onclick = function(){
+  this.parentElement.parentElement.parentElement.querySelector('p').setAttribute('contentEditable', 'true');
+  this.parentElement.parentElement.parentElement.querySelector('p').classList.add('active');
+  updateBtn.classList.add('active');
+}
+
+updateBtn.onclick = function(){
+  updateBtn.classList.remove('active');
+  this.parentElement.parentElement.querySelector('p').classList.remove('active');
+  this.parentElement.parentElement.querySelector('p').removeAttribute('contentEditable');
+}
+
 let container = document.querySelector(".container");
 let replyBtn = document.querySelectorAll(".replyBtn");
 
@@ -336,7 +350,11 @@ replyBtn.forEach((btn) => {
 let sendBtn = document.getElementById("send");
 
 sendBtn.onclick = function () {
-  sendBtn.classList.add("active");
+  if(this.parentElement.querySelector('textarea').value === ''){
+    alert('Write something to comment!')
+  }
+  else{
+    sendBtn.classList.add("active");
   let messageBox = document.createElement("div");
   messageBox.className = "messageBox";
 
@@ -463,4 +481,5 @@ sendBtn.onclick = function () {
   messageBox.appendChild(reactions);
   messageBox.appendChild(contents);
   sendBtn.parentElement.before(messageBox);
+  }
 };

@@ -290,3 +290,97 @@ button:hover{
         float: none;
     }
 }
+
+@media screen and (min-width: 600px) {
+    main{
+        width: 90%;
+    }
+    .messageBox{
+        flex-direction: column-reverse;
+        position: relative;
+    }
+    .reactions{
+        flex-direction: row;
+    }
+    .reactions span:last-child{
+        line-height: 25px;
+    }
+    .userBox>button{
+        position: absolute;
+        bottom: 18px;
+        right: 20px;
+    }
+    .line{
+        margin:0 20px;
+        margin-top: 20px;
+    }
+    .updateContent{
+        position: absolute;
+        right: 20px;
+        bottom: 18px;
+        gap: 10px;
+    }
+    .commentBox{
+        flex-direction: column-reverse;
+        position: relative;
+    }
+    .commentBox img{
+        margin-top: 10px;
+        width: 30px;
+    }
+    .commentBox textarea{
+        width: 100%;
+    }
+    .commentBox button{
+        position: absolute;
+        right: 20px;
+        bottom: 10px;
+    }
+    .updateBtn{
+        width: 100%;
+        float: none;
+    }
+}
+
+@media  screen and (min-width: 750px) {
+    main{
+        width: 700px;
+    }
+    .messageBox{
+        flex-direction: row;
+    }
+    .reactions{
+        flex-direction: column;
+    }
+    .reactions span:last-child{
+        line-height: 25px;
+    }
+    .userBox>button{
+        position: unset;
+    }
+    .line{
+        margin:0 50px;
+        margin-top: 20px;
+    }
+    .updateContent{
+        position: unset;
+        gap: 10px;
+    }
+    .commentBox{
+        flex-direction: row;
+    }
+    .commentBox img{
+        margin-top: 0px;
+        width: 30px;
+    }
+    .commentBox textarea{
+        width: 100%;
+    }
+    .commentBox button{
+        position: unset;
+    }
+    .updateBtn{
+        width: 85px;
+        float: right;
+    }
+}
