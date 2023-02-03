@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    box-sizing: border-box;
+}
+:root{
+    --mBlue: hsl(238, 40%, 52%);
+    --sRed : hsl(358, 79%, 66%);
+    --lGray : hsl(239, 57%, 85%);
+    --pRed :  hsl(357, 100%, 86%);
+}
+
+body{
+    background-color: hsl(228, 33%, 97%);
+}
+main{
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.messageBox{
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    background-color: hsl(0, 0%, 100%);
+} 
+.reactions{
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(223, 19%, 93%);
+    border-radius: 5px;
+    text-align: center;
+    align-self: start;
+}
+.reactions span{
+    display: block;
+    width: 35px;
+    height: 30px;
+    line-height: 30px;
+}
+.reactions span:not(:nth-child(2)){
+    cursor: pointer;
+}
+.reactions span:nth-child(2){
+    color: var(--mBlue);
+    font-weight: 500;
+}
+.contents{
+    width: 100%;
+}
+.userBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.userInfo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.userName{
+    font-weight:500;
+}
+.userInfo .date{
+    color: hsl(211, 10%, 45%)
+}
+.userInfo img{
+    width: 30px;
+}
+.userBox button{
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--mBlue);
+}
+button:hover{
+    opacity: 0.5;
+}
+.texts{
+    margin-top: 10px;
+}
+.texts p{
+    line-height: 25px;
+    color: hsl(211, 10%, 45%);
+}
+.texts p.active{
+    padding: 5px 10px;
+    border: 1px solid rgb(0, 0, 0, 0.5);
+    accent-color: var(--mBlue);
+    color: hsl(212, 24%, 26%);
+    border-radius: 5px;
+}
+
+.replyBox{
+    display: flex;
+}
+.replyBox .messageBox{
+    margin-top: 0;
+}
+.replyBox .messageBox{
+    margin-top: 20px;
+}
+.line{
+    border: 1px solid rgb(0, 0, 0, 0.3);
+    margin: 0 50px;
+    margin-top: 20px;
+}
+.indicator{
+    padding: 1px 4px;
+    background-color: var(--mBlue);
+    color: hsl(0, 0%, 100%);
+    border-radius: 2px;
+    font-size: 14px;
+}
+.updateContent{
+    display: flex;
+    gap: 20px;
+}
+.updateContent button:first-child{
+    color: var(--sRed);
+}
+.updateBtn{
+    margin-top: 10px;
+    float: right;
+    display: none;
+}
+.updateBtn.active{
+    display: block;
+}
+
+
+.commentBox{
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    gap: 10px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.1);
+}
+.commentBox img{
+    width: 35px;
+}
+.commentBox textarea{
+    flex-grow: 1;
+    height: 100px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.commentBox button, 
+.updateBtn{
+    width: 85px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--mBlue);
+    font-weight: 500;
+    color: hsl(0, 0%, 100%);
+    cursor: pointer;
+}
+
+.deleteBox{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    background-color: hsl(0, 0%, 100%);
+    padding:20px;
+    border-radius: 10px;
+    z-index: 5;
+    display: none;
+}
+.deleteBox.active{
+    display: block;
+}
+
+.deleteBox h2{
+    color: hsl(212, 24%, 26%);
+}
+.deleteBox p{
+    margin-top: 15px;
+    color: hsl(211, 10%, 45%);
+}
+.deleteBox .btnsG{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.btnsG button{
+    width: 140px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: hsl(0, 0%, 100%);
+    font-size: 16px;
+    font-weight: 500;
+}
+.btnsG button:first-child{
+    background-color: hsl(211, 10%, 45%);
+}
+.btnsG button:last-child{
+    background-color: var(--sRed);
+}
+.background{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0, 0.7);
+    z-index: 3;
+    display: none;
+}
+.background.active{
+    display: block;
+}
+
+.attribution {
+    margin: 10px 0 20px 0;
+    font-size: 14px;
+    text-align: center;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+
+@media screen and (max-width: 600px) {
+    main{
+        width: 90%;
+    }
+    .messageBox{
+        flex-direction: column-reverse;
+        position: relative;
+    }
+    .reactions{
+        flex-direction: row;
+    }
+    .reactions span:last-child{
+        line-height: 25px;
+    }
+    .userBox>button{
+        position: absolute;
+        bottom: 18px;
+        right: 20px;
+    }
+    .line{
+        margin:0 20px;
+        margin-top: 20px;
+    }
+    .updateContent{
+        position: absolute;
+        right: 20px;
+        bottom: 18px;
+        gap: 10px;
+    }
+    .commentBox{
+        flex-direction: column-reverse;
+        position: relative;
+    }
+    .commentBox img{
+        margin-top: 10px;
+        width: 30px;
+    }
+    .commentBox textarea{
+        width: 100%;
+    }
+    .commentBox button{
+        position: absolute;
+        right: 20px;
+        bottom: 10px;
+    }
+    .updateBtn{
+        width: 100%;
+        float: none;
+    }
+}
