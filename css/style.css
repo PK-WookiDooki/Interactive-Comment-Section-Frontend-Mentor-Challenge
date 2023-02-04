@@ -91,11 +91,16 @@ button:hover{
 .texts{
     margin-top: 10px;
 }
+.texts span{
+    color: var(--mBlue);
+    font-weight: 500;
+}
 .texts p{
+    display: inline;
     line-height: 25px;
     color: hsl(211, 10%, 45%);
 }
-.texts p.active{
+.texts.active{
     padding: 5px 10px;
     border: 1px solid rgb(0, 0, 0, 0.5);
     accent-color: var(--mBlue);

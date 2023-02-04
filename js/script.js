@@ -103,6 +103,8 @@ let userThreeComment = document.getElementById("userThreeComment");
 userThreeComment.textContent = data.comments[1].replies[0].content;
 let userThreeAvatar = document.getElementById('userThreeAvatar');
 userThreeAvatar.src = data.comments[1].replies[0].user.image.png;
+let metionToUserTwo = document.getElementById('metionToUserTwo');
+metionToUserTwo.textContent = '@' + data.comments[1].replies[0].replyingTo;
 
 let userFourScore = document.getElementById("userFourScore");
 userFourScore.textContent = data.comments[1].replies[1].score;
@@ -114,6 +116,8 @@ let userFourComment = document.getElementById("userFourComment");
 userFourComment.textContent = data.comments[1].replies[1].content;
 let userFourAvatar = document.getElementById('userFourAvatar');
 userFourAvatar.src = data.comments[1].replies[1].user.image.png;
+let metionToUserThree = document.getElementById('metionToUserThree');
+metionToUserThree.textContent = '@' + data.comments[1].replies[1].replyingTo;
 
 let plusBtns = document.querySelectorAll(".plus");
 let minusBtns = document.querySelectorAll(".minus");
@@ -173,15 +177,15 @@ confirmDel.onclick = function () {
 let updateBtn = document.querySelector('.updateBtn')
 let editBtn = document.querySelector('.editBtn');
 editBtn.onclick = function(){
-  this.parentElement.parentElement.parentElement.querySelector('p').setAttribute('contentEditable', 'true');
-  this.parentElement.parentElement.parentElement.querySelector('p').classList.add('active');
+  this.parentElement.parentElement.parentElement.querySelector('.texts').setAttribute('contentEditable', 'true');
+  this.parentElement.parentElement.parentElement.querySelector('.texts').classList.add('active');
   updateBtn.classList.add('active');
 }
 
 updateBtn.onclick = function(){
   updateBtn.classList.remove('active');
-  this.parentElement.parentElement.querySelector('p').classList.remove('active');
-  this.parentElement.parentElement.querySelector('p').removeAttribute('contentEditable');
+  this.parentElement.parentElement.querySelector('.texts').classList.remove('active');
+  this.parentElement.parentElement.querySelector('.texts').removeAttribute('contentEditable');
 }
 
 let container = document.querySelector(".container");
@@ -311,24 +315,28 @@ replyBtn.forEach((btn) => {
       let texts = document.createElement("div");
       texts.className = "texts";
 
+      let mentions = document.createElement('span');
+      mentions.textContent = '@' + btn.parentElement.querySelector('.userName').textContent;
+      texts.appendChild(mentions);
+
       let p = document.createElement("p");
       p.className = "comment";
+      textarea.value = textarea.value.substring(btn.parentElement.querySelector(".userName").textContent.length + 1)
       p.textContent = textarea.value;
       texts.appendChild(p);
 
       let updateBtn = document.createElement("button");
       updateBtn.className = "updateBtn";
       updateBtn.textContent = "Update";
-
       editBtn.onclick = function () {
-        p.setAttribute("contentEditable", "true");
-        p.classList.add("active");
+        texts.setAttribute("contentEditable", "true");
+        texts.classList.add("active");
         updateBtn.classList.add("active");
       };
 
       updateBtn.onclick = function () {
-        p.removeAttribute("contentEditable");
-        p.classList.remove("active");
+        texts.removeAttribute("contentEditable");
+        texts.classList.remove("active");
         updateBtn.classList.remove("active");
       };
 
